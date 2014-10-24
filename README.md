@@ -30,11 +30,16 @@ TODO list
   2.1 Model
   2.1.1 create a SQL Server database named db.mdf
   2.1.2 using SQL command to create a table for threads
-    CREATE TABLE threads
-    (First_Name char(50), Last_Name char(50), Address char(50), City char(50), Country char(25), Birth_Date datetime);
+      CREATE TABLE thread
+      (ID Int, author Varchar(50), email Varchar(50), title Varchar(50), context Varchar, D, view Int, reply Int);
+  2.1.2 using SQL command to create a table for replies
+      CREATE TABLE reply
+      (ID Int, author Varchar(50), email Varchar(50), context Varchar, threadID Int);
   
   
   2.2 View
+  2.2.1 create the index page including a list of threads using SQL command
+      SELECT ID,author,title FROM thread 
   
   2.3 Control
   
