@@ -22,6 +22,11 @@ TODO list
 
 2.implementation steps
   2.1 Model
+  2.1.1 create a SQL Server database named db.mdf
+  2.1.2 using SQL command to create a table for threads
+    CREATE TABLE Customer
+    (First_Name char(50), Last_Name char(50), Address char(50), City char(50), Country char(25), Birth_Date datetime);
+  
   
   2.2 View
   
