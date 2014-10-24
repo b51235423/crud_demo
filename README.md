@@ -53,14 +53,23 @@ TODO list
       Using SQL command "SELECT ID,author,email,context,threadID,t FROM reply WHERE threadID = @ID ORDER BY t DESC" to       show replies of current viewing thread.
       Two Textboxes for reply name and reply context, and a submit button. Using SQL command to create new reply to a       thread
       
-      
+  2.2.3 Administrator page
+      After pass a identification process for administrator, a visitor can access a page with following options 
+      A. update a thread's title or context (Thread ID,title,context required)
+      B. delete a thread (Thread ID required)
+      C. delete a reply (Reply ID required)
     
   2.3 Control
-      /index?sort=S
+  
+      HomeController
       
+      /index
+      /index?sort=S
       /index?search=KEY
+      show page described in 2.2.1
       
       /thread?id=ID
+      show page decribed in 2.2.2
       
       /submit_thread?n=NAME&e=EMAIL&t=TITLE&c=CONTEXT
       execute SQL command
@@ -69,6 +78,9 @@ TODO list
       /submit_reply?n=NAME&e=EMAIL&c=CONTEXT
       execute SQL command
       "INSERT INTO reply (author,email,context) VALUES ('@NAME','@EMAIL','@CONTEXT')"
+      
+      /admin
+      show options of a administrator as described in 2.2.3
       
       /update_thread?id=ThreadID&t=TITLE&c=CONTEXT
       execute SQL command
