@@ -30,25 +30,31 @@ TODO list
   2.1 Model
   2.1.1 Create a SQL Server database named db.mdf
   2.1.2 Using SQL command to create a table for threads
-      "CREATE TABLE thread (ID Int, author Varchar(50), email Varchar(50), title Varchar(50), context Varchar(MAX), t        Datetime, view Int, reply Int);"
+      "CREATE TABLE thread (ID Int AUTO_INCREMENT, author Varchar(50), email Varchar(50), title Varchar(50), context        Varchar(MAX), t Datetime DEFAULT GETDATE(), view Int, reply Int);"
   2.1.2 Using SQL command to create a table for replies
-      "CREATE TABLE reply (ID Int, author Varchar(50), email Varchar(50), context Varchar(MAX), t Datetime, threadID         Int);"
+      "CREATE TABLE reply (ID Int AUTO_INCREMENT, author Varchar(50), email Varchar(50), context Varchar(MAX), t            Datetime DEFAULT GETDATE(), threadID Int);"
   
   2.2 View
   2.2.1 Index page
-      A list of threads from recent to past using SQL command "SELECT ID,author,title FROM thread ORDER BY t DESC"
+      A list of threads from recent to past using SQL command "SELECT ID,author,title,t FROM thread ORDER BY t DESC"
       A link to change the list to show threads from past to recent using SQL command 
-      "SELECT ID,author,title FROM thread ORDER BY t"
+      "SELECT ID,author,title,t FROM thread ORDER BY t"
       A link to change the list to show threads ordered by view count using SQL command 
-      "SELECT ID,author,title FROM thread ORDER BY view DESC"
+      "SELECT ID,author,title,t FROM thread ORDER BY view DESC"
       A link to change the list to show threads ordered by reply count using SQL command 
-      "SELECT ID,author,title FROM thread ORDER BY reply DESC"
+      "SELECT ID,author,title,t FROM thread ORDER BY reply DESC"
       A textbox and a submit button for user to search thread title, author or context using SQL command
-      "SELECT ID,author,title FROM thread WHERE title like '%INPUT%' or author like '%INPUT%' or context like '%INPUT%' ORDER BY t DESC"
-      
+      "SELECT ID,author,title,t FROM thread WHERE title like '%@KEY%' or author like '%@KEY%' or context like               '%@KEY%' ORDER BY t DESC" and INPUT should be detect for SQL preserve words and remove.
   
+  2.2.2 Thread page
+      Using SQL command "SELECT ID,author,email,title,context,t FROM thread WHERE ID = @ID" to get author, email,           title,context of a thread and show in a table tag.
+      Using SQL command "SELECT ID,author,email,context,threadID,t FROM reply WHERE threadID = @ID ORDER BY t DESC" to       show replies of current viewing thread.
+      Two Textboxes for reply name and reply context, and a sub button for a
+    
   2.3 Control
-      /default 
-      /default_
+      /index?sort=S
+      /index?search=KEY
+      /thread?id=ID
+      /submit_thread?
   
 </pre>
