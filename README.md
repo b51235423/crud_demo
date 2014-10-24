@@ -45,16 +45,42 @@ TODO list
       "SELECT ID,author,title,t FROM thread ORDER BY reply DESC"
       A textbox and a submit button for user to search thread title, author or context using SQL command
       "SELECT ID,author,title,t FROM thread WHERE title like '%@KEY%' or author like '%@KEY%' or context like               '%@KEY%' ORDER BY t DESC" and INPUT should be detect for SQL preserve words and remove.
+      A form for visitor to post a new thread including textboxes for title, context, name, email and a submit button
+      using SQL command to add new thread.
   
   2.2.2 Thread page
       Using SQL command "SELECT ID,author,email,title,context,t FROM thread WHERE ID = @ID" to get author, email,           title,context of a thread and show in a table tag.
       Using SQL command "SELECT ID,author,email,context,threadID,t FROM reply WHERE threadID = @ID ORDER BY t DESC" to       show replies of current viewing thread.
-      Two Textboxes for reply name and reply context, and a sub button for a
+      Two Textboxes for reply name and reply context, and a submit button. Using SQL command to create new reply to a       thread
+      
+      
     
   2.3 Control
       /index?sort=S
+      
       /index?search=KEY
+      
       /thread?id=ID
-      /submit_thread?
+      
+      /submit_thread?n=NAME&e=EMAIL&t=TITLE&c=CONTEXT
+      execute SQL command
+      "INSERT INTO thread (author,email,title,context) VALUES ('@NAME','@EMAIL','@TITLE','@CONTEXT')"
+      
+      /submit_reply?n=NAME&e=EMAIL&c=CONTEXT
+      execute SQL command
+      "INSERT INTO reply (author,email,context) VALUES ('@NAME','@EMAIL','@CONTEXT')"
+      
+      /update_thread?id=ThreadID&t=TITLE&c=CONTEXT
+      execute SQL command
+      "UPDATE thread SET title='@TITLE', context='@CONTEXT' WHERE ID = @ThteadID"
+      
+      /delete_thread?id=ThreadID
+      execute SQL command
+      "DELETE FROM thread WHERE ID = @ThreadID"
+      
+      /delete_reply?id=ReplyID
+      execute SQL command
+      "DELETE FROM thread WHERE ID = @ReplyID"
+      
   
 </pre>
