@@ -21,5 +21,10 @@ TODO list
   1.4.1 Administrator to delete a thread or a reply.
 
 2.implementation steps
+  2.1 Model
+  
+  2.2 View
+  
+  2.3 Control
   
 </pre>
