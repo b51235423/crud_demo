@@ -25,6 +25,9 @@ TODO list
   
   1.6 Sort
   1.6.1 Visitors can sort threads according to its date, view count or reply count.
+  
+  1.7 Extra functions
+  1.7.1 A more efficient search can be implemented using cosine similarity compare.
 
 2.implementation steps
   2.1 Model
